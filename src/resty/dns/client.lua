@@ -555,6 +555,7 @@ _M.init = function(options)
         -- ipv6 with a scope
         log(DEBUG, PREFIX, "skipping IPv6 nameserver (scope not supported) ", port and (ip..":"..port) or ip)
       else
+        ip = string.gsub(ip, "%[*%]*", "")
         if port then
           options.nameservers[#options.nameservers + 1] = { ip, port }
         else
